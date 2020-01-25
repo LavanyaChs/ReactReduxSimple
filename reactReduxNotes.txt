@@ -1,0 +1,797 @@
+React JS:
+-----
+html 5 , css 3.0 , js, ts
+
+dynamic loading of page with lazy loding.
+JQUERY - NOT for Enterprise app
+
+html
+1996 JS
+AJAX
+HML HTTP Request
+JQuery
+2008's
+Backbone js - MVvC - 2 way binding
+
+
+ES5 JS -Obj Based 
+ES6 
+1)JSX
+ - OO
+2)TS
+	- Type safety
+	
+	let x = 10
+	x="lav" // Error
+	
+2010:
+Node js
+
+Server side JS -Node js
+Client  side JS  - V8 - chrome
+
+Angular JS 2011- google
+2014 - FB - React - angular is not sutable for real time data
+to handle Data intensive real time data - DIRT - react
+2015
+
+Google  - in 6 months - Angular 2 , 3,4,5,6..... Beta 9,10
+
+
+
+
+>10.x , react 16.5
+React 16.12
+
+life cycle methods
+context API
+ContextTYpe
+Profiler
+Lazy loading - perfromace
+PureComp.
+Hooks
+Fragments,Portals
+
+
+
+
+----------------------
+React ingridients:
+
+
+Webpack takes all files and give to BABEL(Traspiler - takes ES6 - >gives lower JS)
+Babel makes react cross browser compatable.
+Babel forms main/bundle.js
+
+Take this call bundle.js from Tomcat
+In Js,
+Electron JS - allows to accesss file sys which is not possile with js - USed to devlop Desktop applications.
+
+Same React projects can be opened as Desktop applications.
+
+
+in angular ngCLI.
+
+>npm i Create-react-app -g
+>create-react-app spa-app
+>cd spa-app>npm start
+
+Component:
+Small
+Self contained
+Often reusable
+
+- html+css+JSx.TSx
+- one comp. is one DOM branch in browser
+- one comp. is Comp tree in react
+-React is Unidirectional data flow architecture,not MVC or MVvC
+
+Component tree ->Virtual Dom tree - > Dom tree
+
+Single responsibility for Single component in React
+
+Diffin and Reconsilation Algo - Indetify state changes in Virtual DOm - > only that particular DOM node is updated
+
+Global store - app - > child ->sub child
+
+Var Obj = {} // its a empty Dictionary-key value pairs
+
+
+Container - Presentational
+
+Container is actually a Router outlet
+React is declarative - not working with direct Dom
+JQUERY is imepartive - directly works with Dom
+
+
+
+
+Components
+1)Functional - no state - state less - presentational components
+2)Class - will have state - containers
+STATE comes from REDUX
+
+Connect - to connect react with redux
+
+presentational Comp. - > generally fatArrow , anonymus
+How to call?? Dont give name but give a pointer
+export const x= (p,q) =>{
+log("DO something")
+}
+//now call x.
+
+Callbacks will also are examples of Anonymus functions
+
+
+props vs state:
+with in comp . - satate
+from parent to child - props
+
+class Demo extends React.Components{
+
+ -//we are overriding render method - in from of JSX
+}
+
+project can be set up in Stackbliz.com
+
+
+
+in public/index.html - 
+    <div id="root"></div> is called mounting points
+	
+	
+	outside tree if we mount any components they are calls PORTALS. Eg : tooltip component
+	
+ServiceWorker
+
+Hot module reload technology
+
+parent <div> 
+called React.Fragments -> Now just <> ............
+
+<p>dhds</p>
+<h>ufhduc</h>
+
+</>
+
+immutability and mutability:
+--------------------
+var x = 10
+var y =x
+y=20
+log(x) //10;
+variables follow call by value i.e a copy of values will be formed.
+
+var obj1 = {p:"lav"}
+var obj2 = obj1;
+obj2.p = "test"
+log(obj1.p) // "test"
+
+//Because objects are created internally as 
+var obj2 = Object.assign({},ob1); //ES5
+
+Objects are mutable
+//In ES6 - 
+obj2 = {...obj1}; // its one more copy of obj1
+
+Map , filter,forEach will internally works on immutability
+
+grid.map((item,index)=>{
+)
+item will hold copies of all elements one by one.
+So when we change to copy(item) , actual grid wont change.
+Thats why when we update child , parent cant be child . As child is having a copy. thats why react is Uni-directional ( parent to child only)
+
+	
+	
+Functions when send to child , its like passing a pointer to child, not sending function.
+
+
+Generally in Functional component , no constructor is need.directly use props.
+But in React 16.8 - we can have sate in presentational comp, called HOOKS
+
+binding handlers - 3 ways
+1)in constructor - one time binding
+2)binding at time of rendering - old  // func1={this.func.bind(this)}
+3)fatArrow
+
+only if we pass in either ways, child can invoke the handler
+
+
+
+Synthetic events - > events created on virtual DOM - generally callbacks - we have to bind these methods/handlesrs
+onclick - onClick
+
+it will take/give back event.target.value internally to parent/prop function as argument.
+//Just call reference onChange.no need of ().
+//In parent updateProp = {(event)=>this.changeState(event)}
+
+//To send extra arguments,
+in child - onChange = {props.updateProp(arg1)}
+in parent - updateProp = {(event,arg1)=>this.changeState(event,arg1)}
+
+
+As we are working with virtual DOM , that is string representaion of code. DOM is not born yet. 
+<input type="type" id " id1" />
+So we cant access like document.getElementById("id1");
+
+
+
+So how to get???
+use REF's. This will be accessable only in comp.and when event occured.
+
+Just create a reference and access later.
+refs.id1.value.
+
+
+we cant use like this.state={vfosvo,} // because it is immutable.
+To do this use setState()
+
+If we use 
+//In parent updateProp = {(event)=>this.changeState(event)}
+, we cant do when we use REF's.
+
+
+23 JAN 2020 - 2:00Pm:
+==============
+Redux , Flux,Mobex - state management tools for uni directional data flow.
+
+Context API:
+---------
+Context
+state
+{
+
+
+}
+provider , consumer
+
+only provider will update state
+But consumer should subscribe to consume what provider provides.
+Consumer can also request provier to invoke some request and do something.
+
+Redux vs Context:
+-------
+Mainting state out of React context - Redux , this can be used by other React apps.
+But Context is with in React app, cant be use out of our context.
+
+In angular : RxJs - Observables is same like this
+
+Redux Observable is new sarted after RxJs.
+
+-form React16.5
+1)create context  - React.createContext()- if no argument, default state is created.
+2)create provider
+3)defined context
+4)create consumer
+
+from 16.7
+how to use states in presentational component?? HOOKS
+
+
+life cycle methods:
+
+1)Initialization - setup props and state
+2)Mounting - componentWillMount , render , componentDidMount
+3)Update  -  A)props , B)state
+4)Unmounting - componentWillUnmount (this is available in latest)
+5)Error Handling
+
+We cant user JQuery in React because we wont use real DOM.
+But we can do it in componentDidUpdate
+
+Any one time initialixation should be done in componentDidMount.
+
+To do initial AJSX call, we have to wait few minutes for initial render of page also, FB removed all XXXWillXXX methods,so use componentDidMount to do initial AJAX.
+
+3A) componentWillReceiveProps, shouldComponentUpdate(T/F),componentWillUpdate,Render,componentDidUpdate
+3B)shouldComponentUpdate(T/F),componentWillUpdate,Render,componentDitUpdate
+
+
+
+New life cycle methods:
+
+static getDerivedStateFromaProps
+getSnapshotBeforeUdate
+
+getDerivedStateFromError - return true will take to next or no
+componetDidCatch
+
+
+dont use willMount,willUpdate,willReceiveProps
+
+IN constructor of child , we can access as props, but at other places access as this.props.
+
+---NO -Instead of componentWillReceivePops , getDerivedStateFromProps
+
+-->getDerivedStateFromProps will be called at initialization step and when ever component gets updated.
+
+From ES7 : thought there is no constructor , we can initialize state in component.
+
+to control visual behavior (scroll) control it in getSnapShotBeforeUpdate
+
+If there are lifecycle methods in state less functional components, its a way good.
+So from 16.7
+in 16.12 - useContext,useState,useEffect,useReducer,useFetch..... ---- these are utility functions for presentational.stateless functional components.
+
+in obj destructuring, copy will be stored
+
+hook1.js  is stateFullComp.
+hook2.js Hooks/utilities
+
+
+http://collabedit.com/6xh3q
+https://jsfiddle.net/0x59rmn8
+
+from 16.7:
+-----
+const payment = 
+React.lazy('payment.js')
+<React.Suspense>
+<div>Please wait .... </div>
+<payment />
+</React.Suspense>
+
+<React.Memo> - old cashed copy will be stored so that less time is taken.
+
+
+> npm install react-router-dom --save
+
+
+no external Template  - Problem in React
+in Angular it is Template..
+
+
+======================================================
+24 Jan 2020:
+State Management : REDUX
+
+pure function - function which does not mutate object and just returns a new object - Eg: render()
+same way, PureComponent.
+
+PropTypes is for development/debugging not in production env.
+Component.forceUpdate(); - 
+
+HOF/HOC : Higher order function/Component:
+-------------------
+A func that accept func as arg and return funch are called HOF.
+func which receives args's is called HOF.
+
+When a comp. accepts a comp as i/p and returns a comp as o/p , it is HOC
+
+HOC name convention : 
+const withElement = Element =>()=> &lt;Elelement.
+//start with "WithXXXXXX"
+***
+In redux , connect is HOC -> connect will take our Comp and add some features like adding our comp state to global state and return same Comp.
+***
+
+Reducer + Flux = Redux
+--------------
+In this emphasisi is on functional programming and immutability 
+
+
+Middlewares:  -- configure them with store.
+Available in market:
+Redux- promise , to asynchronously invoking actions
+Redux - thunk , to asyn invoke multiple reducer updates, this sits b/w action and reducer
+new , Redux-saga , invoke actions sync.this will sit in b/w copm and actions.
+one more , Redux-Observable , if mutiple streams.... than Saga,this will have multiple other utility support
+
+Store is center for everything.
+ it will allow to dispatch, subscribe.
+ 
+ 
+ when doing undo/redo - use Redux logger.
+ 
+ Immutable.js to optimitically update state
+
+Redux Fiber - to do actions async. with out jerks on UI.
+
+yarn add react<NAME>....
+
+ngAdd
+npm vs yarn : 
+npm just downloads lib,
+yarn will download and do initial config of updating where lib is needed for existing code.
+
+>create-react-app redux-app
+>cd redux-app
+>npm i redux --save
+
+
+Store will be connected to React by Provider.
+
+
+
+store->provider>container->comp-> action->Reducer->store
+
+provider, will give us store.
+Comp. - can be functional or class
+actions - takes type of actions and payload as input. do AJAX calls and sends new details received as response from API to Redux.
+Redux -  takes a type as i/p and aguments its to diff. comp. states as reqy. and as state/reducer is immutable, this takes a old state copy and updates with new payload received and updates stores.
+
+Updated comp state start reacting by re rendering.
+
+
+mapStateToProps , mapDispatchToProps are methods we use to connect our subscribed comp to store and actions.
+to use,
+>npm i react-redux --save
+
+we can have more than one reducers , but only one STORE.
+
+IN flux, we can even have multiple stores. But maintainability is more. So FB stopped that and gave REDUX with single store.
+---
+
+1)create store - args = reducer,initialstore,anyother middlewares
+
+keep on https
+CFRS tokens
+JWS
+
+redux store representaion is called STATE tree
+
+state tree + Component tree = dom tree.
+
+Store.dispatch () -> MIddle ware stack (extintion point)-> reducer
+
+>npm i redux-logger --save-dev //this is  middleware
+
+//to debug redux application - devDependency
+>npm install redux-devtools-extension --save-dev
+
+add Redux DevTools ext. in chrome
+
+in code to debugg, write composeWithDevTools
+
+we can combine reducers as we can have multiple reducers before applying middleware.
+
+
+After this composeWithDevTools to above.
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import App from './App';
+// import './index.css';
+
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
+//-----
+//Using store as is
+// import {createStore} from 'redux'
+
+// // Create reducers to update store
+// const reducer=function(state,action){
+//     if(action.type==='INC'){
+//         return state+action.payload;
+//     }    
+//     if(action.type==='DEC'){
+//         return state-action.payload;
+//     }
+//     return state;
+// }
+
+// // Creating store and attaching to reducer with initial state
+// const store=createStore(reducer,1);
+// // Subscribe to store to get new state
+// store.subscribe(()=>{
+//     console.log("Store Changed :"+store.getState())
+// });
+// // Dispatch action to invoke reducer 
+// store.dispatch({type:"INC",payload:1});
+// store.dispatch({type:"INC",payload:3});
+// store.dispatch({type:"DEC",payload:20});
+//----------
+//Now as middleware
+
+// import {applyMiddleware,createStore} from 'redux'
+// //npm install redux-logger  --save-dev
+// import logger from "redux-logger";
+
+// const reducer=function(state,action){
+//     if(action.type==='INC'){
+//         return state+action.payload;
+//     }
+//     if(action.type==='DEC'){
+//         return state-action.payload;
+//     }
+//     else if(action.type==='E'){
+//         throw new Error("Ooops!!!!!!")
+//     }
+//     return state;
+// }
+// //Custom Logger middleware
+// const RemoteLogger=(store)=>(next)=>(action)=>{
+//     console.log("Remote logging done for ",action);
+//    // action.type="DEC"; //we can modify things
+//    // make fetch/axios call to remote log the details
+//     next(action);
+// }
+// //above is custome middle ware,in applyMiddle , there are coma seperated, after this we have to say continue with next.So use next().
+
+// //Custom Error Middleware
+// const error=(store)=>(next)=>(action)=>{
+//     try{
+//         next(action);
+//     }catch(e){
+//         console.log('Ohhhhh..Error',e);
+//     }
+// }
+
+// const middleware=applyMiddleware(logger); //with this store will know we are using this utility , on console we will see prev state, new state,type of action
+// //if multiple are there, add them coma seperated
+// const store = createStore(reducer, 1, middleware);
+
+// store.subscribe(()=>{
+//     console.log("Store Changed :"+store.getState())
+// });
+// store.dispatch({type:"INC",payload:1});
+// store.dispatch({type:"INC",payload:3});
+// store.dispatch({type:"DEC",payload:20});
+
+//============
+/*
+redux store representaion is called STATE tree
+
+state tree + Component tree = dom tree.
+
+Store.dispatch () -> MIddle ware stack (extintion point)-> reducer
+
+>npm i redux-logger --save-dev //this is  middleware
+
+//to debug redux application - devDependency
+>npm install redux-devtools-extension --save-dev
+
+add Redux DevTools ext. in chrome
+
+in code to debugg, write composeWithDevTools
+
+we can combine reducers as we can have multiple reducers before applying middleware.
+
+
+After this composeWithDevTools to above. */
+
+//----
+//Level 3:Combined reducers with debugging using Redux dev tool
+
+import {combineReducers,applyMiddleware,createStore}
+      from 'redux';
+import logger from "redux-logger";
+//npm install  redux-devtools-extension --save-dev
+import { composeWithDevTools } from "redux-devtools-extension"; 
+// Goto Chrome, search for "redux dev tools"and add extension
+
+const userReducer=(state={},action)=>{   
+    switch(action.type){
+        case "CHANGE_NAME":{
+           // olddata=...state
+         return state={...state,name:action.payload};            
+        }
+        case "CHANGE_AGE":{
+         return  state={...state,age:action.payload};           
+        }       
+    }
+   return state;
+}
+const tweetReducer=(state=[],action)=>{      
+   return state;
+}
+
+const reducers=combineReducers({
+    user:userReducer,
+    tweets:tweetReducer
+});
+
+const store=createStore(reducers,
+    composeWithDevTools(applyMiddleware(logger)));
+
+    store.subscribe(()=>{
+    console.log("store Changed:",store.getState());
+})
+store.dispatch({type:'CHANGE_NAME',payload:"Murthy"});
+store.dispatch({type:'CHANGE_AGE',payload:35});
+store.dispatch({type:'CHANGE_NAME',payload:"Raju"});
+
+
+//open redux-dev-tools ext.
+
+user clicks login , show loading...
+before calling service.
+
+>npm install redux-thunk --save
+> npm i axios --save
+
+Now inside store.dispatch(), we can dispatch other action/function as we are using thunk middleware.
+
+Profiler we can view from react 16.5
+
+
+every folder will have index.js
+so at import just give path to folder. it will understand that it has to go to index file in the folder
+
+
+In redux , give all file names use in small leters
+
+
+If we wont use thunk when applying middle ware, all dispatches will be called synchronously. So to dispatch asynchronously use thunk.
+
+
+check fake-medium app.
+
+npm test -- --coverage
+
+React.Lazy:
+------
+downloading modules dynamically when needed as chunks.
+
+
+xmlhttprequest
+
+mapStateToProps,mapDispatchToProps are not keywords.
+
+React material :
+
+https://bit.ly/2tKDd4d
+
+dsrmurthysoftware@gmail.com
+
+
+
+
+To synchronize server and client application asynchronously , there will be ASYNC/middle part b/w components and actions.
+That middle part to do all asyn. invokation of actions and handling actions , we use , redux-thunk,saga,promise,Observable.
+
+RxJS needed to learn Observable.
+
+Redux Selectors.
+redux - apolo,bootstrap,router,router-dom
+
+>npm install redux-saga --save
+-sagas are functions
+
+In Saga - 
+in mapDispatchToProps , we can directly dispatch a action.
+
+
+Saga will use generator functions.
+We will have yields - that is we will wait here until that yield is completed.
+so , do yield , yield...... then dispatch to store in last to update .
+
+when doing payment, suddently we click cancel which wont work, but with Saga, we can stop yielded function.
+
+function* Sum(x,y){ //* after function says this is generator func.
+yield p;
+yield q,
+put({type:"AGE_UP_ASYNC",value:1})  //wrapper to dispatch
+}
+
+call for each next().
+//All p,q.... are synchronous. that is user wont be blocked.
+
+https://jsfiddle.net/wmd371pa/16/
+but some actions we should be observing to use in generator fuctions using 
+another generator function and funch. name should start with watchXXXX , can be done using saga
+
+Drwaback of redux : its synchronous.
+How to solve it? use thunk,saga.....
+
+
+
+yield can be used in execution order.
+But await can be used only when promise chaining is used.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
